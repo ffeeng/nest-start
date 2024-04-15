@@ -1,0 +1,36 @@
+### getCats
+GET http://localhost:3000/cats
+
+
+### getUser
+GET http://localhost:3000/users/2
+
+
+###
+POST http://localhost:3000/cats
+Content-Type: application/json
+
+[
+]
+
+### delUser
+PUT http://localhost:3000/users/3
+Content-Type: application/json
+
+{
+  "firstName": "a",
+  "lastName": "b"
+}
+
+
+
+### updateUser
+PUT http://localhost:3000/users/2
+Content-Type: application/json
+
+{
+  "firstName": "a",
+  "lastName": "b"
+}
+
+
