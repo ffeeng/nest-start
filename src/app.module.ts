@@ -11,7 +11,7 @@ import { CatsModule } from './cats/cats.module';
       host: '127.0.0.1',
       port: 3306,
       username: 'root',
-      password: 'feng',
+      password: '123456',
       database: 'test',
       autoLoadEntities: true,
       synchronize: true,
