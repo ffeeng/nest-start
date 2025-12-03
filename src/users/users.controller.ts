@@ -8,17 +8,16 @@ import {
   ParseIntPipe,
   Put,
 } from '@nestjs/common';
-import { CreateUserDto } from './create-user.dto';
+import { UserDto } from './types';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
-import { UpdateResult } from 'typeorm/query-builder/result/UpdateResult';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto): Promise<User> {
+  create(@Body() createUserDto: UserDto): Promise<User> {
     return this.usersService.create(createUserDto);
   }
 
@@ -33,7 +32,7 @@ export class UsersController {
   }
 
   @Put(':id')
-  updateOne(@Param('id', ParseIntPipe) id: number,@Body() user: CreateUserDto ): Promise<User> {
+  updateOne(@Param('id', ParseIntPipe) id: number,@Body() user: UserDto ): Promise<User> {
     return this.usersService.update(id,user);
   }
 
