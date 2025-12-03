@@ -8,7 +8,7 @@ import {
   ParseIntPipe,
   Put,
 } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto } from './create-user.dto';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
 import { UpdateResult } from 'typeorm/query-builder/result/UpdateResult';
@@ -33,8 +33,8 @@ export class UsersController {
   }
 
   @Put(':id')
-  updateOne(@Param('id', ParseIntPipe) id: number): Promise<UpdateResult> {
-    return this.usersService.update(id);
+  updateOne(@Param('id', ParseIntPipe) id: number,@Body() user: CreateUserDto ): Promise<User> {
+    return this.usersService.update(id,user);
   }
 
   @Delete(':id')
