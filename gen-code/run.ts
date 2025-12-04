@@ -1,7 +1,7 @@
-const nunjucks = require('nunjucks');
-const { config } = require('./config');
-const fs = require('fs');
-const path = require('path');
+import nunjucks from 'nunjucks';
+import { config } from './config';
+import fs from 'fs';
+import path from 'path';
 
 nunjucks.configure('template', { autoescape: true });
 
