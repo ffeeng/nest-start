@@ -1,0 +1,5 @@
+export class {{entityName}}Dto {
+  {% for f in attrs %}
+  {{ f.name }}: {{ f.type }};
+  {% endfor %}
+}

@@ -1,0 +1,43 @@
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  ParseIntPipe,
+  Put,
+} from '@nestjs/common';
+import { {{entityName}}Dto } from './types';
+import { {{entityName}} } from './{{entityname}}.entity';
+import { {{entityName}}Service } from './{{entityname}}.service';
+
+@Controller('{{entityname}}s')
+export class {{entityName}}Controller {
+  constructor(private readonly {{entityname}}Service: {{entityName}}Service) {}
+
+  @Post()
+  create(@Body() {{entityname}}Dto: {{entityName}}Dto): Promise<{{entityName}}> {
+    return this.{{entityname}}Service.create({{entityname}}Dto);
+  }
+
+  @Get()
+  findAll(): Promise<{{entityName}}[]> {
+    return this.{{entityname}}Service.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<{{entityName}}> {
+    return this.{{entityname}}Service.findOne(id);
+  }
+
+  @Put(':id')
+  updateOne(@Param('id', ParseIntPipe) id: number,@Body() {{entityname}}: {{entityName}}Dto ): Promise<{{entityName}}> {
+    return this.{{entityname}}Service.update(id,{{entityname}});
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string): Promise<void> {
+    return this.{{entityname}}Service.remove(id);
+  }
+}

@@ -1,0 +1,11 @@
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity()
+export class {{entityName}} {
+  @PrimaryGeneratedColumn()
+  id: number;
+  {% for f in attrs %}
+  @Column()
+  {{ f.name }}: {{ f.type }};
+  {% endfor %}
+}

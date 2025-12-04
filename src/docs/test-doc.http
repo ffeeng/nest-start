@@ -1,0 +1,45 @@
+
+### addDoc
+POST http://localhost:3000/docs
+Content-Type: application/json
+
+{
+  
+  "title": "title",
+  
+  "content": "content",
+  
+  "creator": "creator",
+  
+  "createTime": "createTime"
+  
+}
+
+### delDoc
+DELETE http://localhost:3000/docs/4
+
+
+### updateDoc
+PUT http://localhost:3000/docs/2
+Content-Type: application/json
+
+{
+  
+  "title": "title",
+  
+  "content": "content",
+  
+  "creator": "creator",
+  
+  "createTime": "createTime"
+  
+}
+
+
+### getDocs
+GET http://localhost:3000/docs
+
+
+### getDoc
+GET http://localhost:3000/docs/1
+

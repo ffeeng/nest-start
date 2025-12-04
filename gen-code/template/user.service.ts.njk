@@ -1,0 +1,40 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { {{entityName}}Dto } from './types';
+import { {{entityName}} } from './{{entityname}}.entity';
+import { UpdateResult } from 'typeorm/query-builder/result/UpdateResult';
+
+@Injectable()
+export class {{entityName}}Service {
+  constructor(
+    @InjectRepository({{entityName}})
+    private readonly {{entityname}}sRepository: Repository<{{entityName}}>,
+  ) {}
+
+  create({{entityname}}Dto: {{entityName}}Dto): Promise<{{entityName}}> {
+    const {{entityname}} = new {{entityName}}();
+    Object.assign({{entityname}}, {{entityname}}Dto);
+    return this.{{entityname}}sRepository.save({{entityname}});
+  }
+
+  async findAll(): Promise<{{entityName}}[]> {
+    return this.{{entityname}}sRepository.find();
+  }
+
+  findOne(id: number): Promise<{{entityName}}> {
+    return this.{{entityname}}sRepository.findOneBy({ id: id });
+  }
+
+ async update(id: number,{{entityname}}: {{entityName}}Dto): Promise<{{entityName}}> {
+   const result =  await this.{{entityname}}sRepository.update({ id: id },{{entityname}});
+   if(result.affected === 0) {
+     throw new NotFoundException('{{entityName}} not found');
+   }
+    return this.{{entityname}}sRepository.findOneBy({ id: id });
+  }
+
+  async remove(id: string): Promise<void> {
+    await this.{{entityname}}sRepository.delete(id);
+  }
+}

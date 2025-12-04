@@ -6,17 +6,15 @@ import { User } from './user.entity';
 import { UpdateResult } from 'typeorm/query-builder/result/UpdateResult';
 
 @Injectable()
-export class UsersService {
+export class UserService {
   constructor(
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
   ) {}
 
-  create(createUserDto: UserDto): Promise<User> {
+  create(userDto: UserDto): Promise<User> {
     const user = new User();
-    user.firstName = createUserDto.firstName;
-    user.lastName = createUserDto.lastName;
-
+    Object.assign(user, userDto);
     return this.usersRepository.save(user);
   }
 

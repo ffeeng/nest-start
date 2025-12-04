@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
+import { UserModule } from './users/user.module';
 import { CoreModule } from './core/core.module';
 import { CatsModule } from './cats/cats.module';
+import { DocModule } from './docs/doc.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { CatsModule } from './cats/cats.module';
       synchronize: true,
       logging: 'all',
     }),
-    UsersModule,
+    UserModule,
+    DocModule,
     CoreModule,
     CatsModule,
   ],

@@ -1,0 +1,33 @@
+
+### add{{entityName}}
+POST http://localhost:3000/{{entityname}}s
+Content-Type: application/json
+
+{
+  {% for f in attrs %}
+  "{{ f.name }}": "{{ f.name }}",
+  {% endfor %}
+}
+
+### del{{entityName}}
+DELETE http://localhost:3000/{{entityname}}s/4
+
+
+### update{{entityName}}
+PUT http://localhost:3000/{{entityname}}s/2
+Content-Type: application/json
+
+{
+  {% for f in attrs %}
+  "{{ f.name }}": "{{ f.name }}",
+  {% endfor %}
+}
+
+
+### get{{entityName}}s
+GET http://localhost:3000/{{entityname}}s
+
+
+### get{{entityName}}
+GET http://localhost:3000/{{entityname}}s/3
+
